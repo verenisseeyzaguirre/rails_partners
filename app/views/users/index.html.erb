@@ -1,0 +1,37 @@
+<%# <p id="notice">< notice ></p> %>
+
+<h1>Lista de compañer@s</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-success">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Github</th>
+      <th>Wsp</th>
+      <th>User id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <% if user.userlog == current_userlog%>
+        <tr>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.github %></td>
+          <td><%= user.wsp %></td>
+          <td><%= user.userlog_id %></td>
+          <td><%= link_to 'Show', user %></td>
+          <td><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Añadir usuario', new_user_path, class:"btn btn-success"  %>
